@@ -1,9 +1,10 @@
+import Layout from '../../Components/Layout'
 function NotFound() {
 
     return (
-        <div className="Abg-neutral-300">
-        NotFound
-        </div>
+        <Layout>
+            NotFound
+        </Layout>
     )
 }
 

@@ -1,9 +1,10 @@
+import Layout from '../../Components/Layout'
 function SignIn() {
 
     return (
-        <div className="Abg-neutral-300">
+        <Layout>
         SignIn
-        </div>
+        </Layout>
     )
 }
 
