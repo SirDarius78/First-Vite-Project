@@ -1,0 +1,8 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+.product-detail {
+    width: 360px;
+    height: calc(100vh - 68px);
+    top: 68px;
+}
