@@ -1,17 +1,10 @@
 import { useContext } from 'react'
-import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom'
 import { ShoppingCartContext } from '../../Context'
 import ShoppingCart from '../ShoppingCart'
-
 const Navbar = () => {
   const context = useContext(ShoppingCartContext)
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
   const activeStyle = 'underline underline-offset-4'
-
   // Sign Out
   const signOut = localStorage.getItem('sign-out')
   const parsedSignOut = JSON.parse(signOut)
@@ -23,13 +16,11 @@ const Navbar = () => {
   const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).length === 0 : true
   const noAccountInLocalState = context.account ? Object.keys(context.account).length === 0 : true
   const hasUserAnAccount = !noAccountInLocalStorage || !noAccountInLocalState
-
   const handleSignOut = () => {
     const stringifiedSignOut = JSON.stringify(true)
     localStorage.setItem('sign-out', stringifiedSignOut)
     context.setSignOut(true)
   }
-
   const renderView = () => {
     if (hasUserAnAccount && !isUserSignOut) {
       return (
@@ -74,37 +65,13 @@ const Navbar = () => {
       )
     }
   }
-/*  return (
-    <nav className='flex flex-col md:flex-row justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white'>
-      <div className='flex items-center gap-3'>
-        <div className='font-semibold text-lg'>
-          <Link to={`${isUserSignOut ? '/sign-in' : '/'}`}>Shopi</Link>
-        </div>
-        <div className='md:hidden'>
-          <button onClick={toggleMenu} className='text-black'>
-            {isOpen ? 'Close' : 'Menu'}
-          </button>
-        </div>
-      </div>
-      <div className={`md:flex flex-col ${isOpen ? 'flex' : 'hidden'}`}>
-        <NavLink
-          to='/'
-          onClick={() => context.setSearchByCategory()}
-          className={({ isActive }) => (isActive ? activeStyle : undefined)}>
-          All*/
   return (
-    <nav className='flex flex-col md:flex-row justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white'>
+    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
       <ul className='flex items-center gap-3'>
         <li className='font-semibold text-lg'>
           <NavLink to={`${isUserSignOut ? '/sign-in' : '/'}`}>
             Shopi
           </NavLink>
-          <div className='md:hidden'>
-          <button onClick={toggleMenu} className='text-black'>
-            {isOpen ? 'Close' : 'Menu'}
-          </button>
-        </div>
-        <div className={`md:flex flex-col${isOpen ? 'flex' : 'hidden'}`}></div>
         </li>
         <li>
           <NavLink
@@ -138,8 +105,8 @@ const Navbar = () => {
         </li>
         <li>
           <NavLink
-            to='/furniture'
-            onClick={() => context.setSearchByCategory('furniture')}
+            to='/furnitures'
+            onClick={() => context.setSearchByCategory('furnitures')}
             className={({ isActive }) =>
               isActive ? activeStyle : undefined
             }>
@@ -167,7 +134,7 @@ const Navbar = () => {
           </NavLink>
         </li>
       </ul>
-      <ul className='flex items-center mt-4 md:mt-0'>
+      <ul className='flex items-center gap-3'>
         {renderView()}
         <li className='flex items-center'>
           <ShoppingCart />
@@ -176,69 +143,4 @@ const Navbar = () => {
     </nav>
   )
 }
-
-/* </div>
-        <div className='flex items-center mt-4 md:mt-0'>
-          {renderView()}
-          <div className='flex items-center'>
-            <ShoppingCart />
-          </div>
-        </div>
-      </nav>
-    );
-  };*/
-
 export default Navbar
-
-
-/*// Navbar.jsx
-import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import ShoppingCart from '../ShoppingCart';
-
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const activeStyle = 'underline underline-offset-4';
-
-  const renderView = () => {
-    // ... (tu lógica actual)
-  };
-
-  return (
-    <nav className='flex flex-col md:flex-row justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white'>
-      <div className='flex items-center gap-3'>
-        <div className='font-semibold text-lg'>
-          <Link to={`${isUserSignOut ? '/sign-in' : '/'}`}>Shopi</Link>
-        </div>
-        <div className='md:hidden'>
-          <button onClick={toggleMenu} className='text-black'>
-            {isOpen ? 'Close' : 'Menu'}
-          </button>
-        </div>
-      </div>
-      <div className={`md:flex flex-col ${isOpen ? 'flex' : 'hidden'}`}>
-        <NavLink
-          to='/'
-          onClick={() => context.setSearchByCategory()}
-          className={({ isActive }) => (isActive ? activeStyle : undefined)}>
-          All
-        </NavLink>
-       
-        </div>
-        <div className='flex items-center mt-4 md:mt-0'>
-          {renderView()}
-          <div className='flex items-center'>
-            <ShoppingCart />
-          </div>
-        </div>
-      </nav>
-    );
-  };
-  
-  export default Navbar;
-*/  

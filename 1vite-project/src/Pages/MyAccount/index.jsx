@@ -97,5 +97,4 @@ function MyAccount() {
         </Layout>
     )
 }
-
 export default MyAccount
