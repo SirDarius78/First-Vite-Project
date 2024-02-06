@@ -1,0 +1,90 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 767px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Estilos específicos para elementos en pantallas pequeñas */
+    .header {
+        background-color: #f4f4f4;
+        padding: 20px 0;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .main {
+        padding: 20px 0;
+    }
+
+    .footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px 0;
+    }
+}
+
+/* Estilos para pantallas medianas */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        padding: 0 30px;
+    }
+
+    .header {
+        background-color: #f4f4f4;
+        padding: 20px 0;
+    }
+
+    .nav {
+        display: block;
+    }
+
+    .main {
+        padding: 20px 0;
+    }
+
+    .footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px 0;
+    }
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 992px) {
+    .container {
+        padding: 0 30px;
+    }
+
+    .header {
+        background-color: #f4f4f4;
+        padding: 30px 0;
+    }
+
+    .nav {
+        display: block;
+    }
+
+    .main {
+        padding: 30px 0;
+    }
+
+    .footer {
+        background-color: #333;
+        color: #fff;
+        padding: 30px 0;
+    }
+}
